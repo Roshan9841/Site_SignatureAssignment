@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption Statistics</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <h1>Pet Adoption Service</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="available_pets.html">Available Pets</a></li>
+                <li><a href="support_services.html">Services</a></li>
+                <li><a href="satisfaction.html">Customer Satisfaction</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                
+                
+            </ul>
+        </nav>
+    </header>
+    
+
+    <!-- Chart Section -->
+    <section id="chart-section">
+        <h2>Pet Adoption Statistics(Scroll Down for a quick video of me traveling to Northeastern University)</h2>
+        <canvas id="adoptionChart" width="400" height="400"></canvas>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video-section">
+        <h2>My Visit to Northeastern University</h2>
+        <video controls>
+            <source src="media/IMG_0576.mov" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>
+
+    <!-- JavaScript for Chart -->
+    <script>
+        var adoptionData = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            adoptedPets: [15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70],
+            returnedPets: [2, 3, 2, 4, 5, 3, 6, 4, 3, 2, 5, 4]
+        };
+
+        var ctx = document.getElementById('adoptionChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: adoptionData.labels,
+                datasets: [{
+                    label: 'Adopted Pets',
+                    data: adoptionData.adoptedPets,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },{
+                    label: 'Returned Pets',
+                    data: adoptionData.returnedPets,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    
+</body>
+</html>
